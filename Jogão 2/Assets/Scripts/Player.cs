@@ -73,6 +73,11 @@ public class Player : MonoBehaviour
             jumping = false;
             anim.SetBool("Jumping", false);
         }
+        if (collision.gameObject.tag == "Danger")
+        {
+            GameController.instance.ShowGameOver();
+            Destroy(gameObject);
+        }
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
