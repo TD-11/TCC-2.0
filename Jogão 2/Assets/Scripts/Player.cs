@@ -78,6 +78,11 @@ public class Player : MonoBehaviour
             GameController.instance.ShowGameOver();
             Destroy(gameObject);
         }
+        if (collision.gameObject.tag == "Victory")
+        {
+            GameController.instance.ShowVictory();
+            Destroy(gameObject);
+        }
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
