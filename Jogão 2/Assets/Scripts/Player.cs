@@ -75,7 +75,7 @@ public class Player : MonoBehaviour
                 anim.SetBool("Jumping", true);
                 // Se for a condição for verdadeira o player vai saltar
                 // Aqui vamos acessar o componente Rigid Body 2D e aplicar a direção da força vezes a força
-                rig.velocity = Vector2.up * forceJump;
+                rig.linearVelocity = Vector2.up * forceJump;
                 // Define "doubleJump" como "true". Possibilitando o segundo pulo
                 doubleJump = true;
             }
@@ -87,7 +87,7 @@ public class Player : MonoBehaviour
                 {
                     anim.SetBool("SecondJumping", true);
                     // Aqui vamos acessar o componente Rigid Body 2D e aplicar a direção da força vezes a força novamente
-                     rig.velocity = Vector2.up * forceJump;
+                     rig.linearVelocity = Vector2.up * forceJump;
                      // Define "doubleJump" como "false"
                      doubleJump = false; 
                 }
