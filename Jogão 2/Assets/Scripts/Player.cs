@@ -71,13 +71,13 @@ public class Player : MonoBehaviour
             // Vai ser verificado se a variável "jumping" é falsa
             if (!jumping)
             {
+                // Executa a animação do pulo
+                anim.SetBool("Jumping", true);
                 // Se for a condição for verdadeira o player vai saltar
                 // Aqui vamos acessar o componente Rigid Body 2D e aplicar a direção da força vezes a força
                 rig.velocity = Vector2.up * forceJump;
                 // Define "doubleJump" como "true". Possibilitando o segundo pulo
                 doubleJump = true;
-                // Executa a animação do pulo
-                anim.SetBool("Jumping", true);
             }
             // caso "jumping' for verdadeiro...
             else
@@ -85,6 +85,7 @@ public class Player : MonoBehaviour
                 // ... e se "doubleJump" for verdadeiro...
                 if (doubleJump) 
                 {
+                    anim.SetBool("SecondJumping", true);
                     // Aqui vamos acessar o componente Rigid Body 2D e aplicar a direção da força vezes a força novamente
                      rig.velocity = Vector2.up * forceJump;
                      // Define "doubleJump" como "false"
@@ -99,10 +100,11 @@ public class Player : MonoBehaviour
         // Se ele colidir com um objeto que tenha uma tag Ground...
         if (collision.gameObject.tag == "Ground")
         {
-            // ... a variável "jumping" vai ser falsa
-            jumping = false;
             // E a animação de pulo será desativada
             anim.SetBool("Jumping", false);
+            anim.SetBool("SecondJumping", false);
+            // ... a variável "jumping" vai ser falsa
+            jumping = false;
         }
         // Se o player colidir em um objeto que tenha a tag Danger... 
         if (collision.gameObject.tag == "Danger")
