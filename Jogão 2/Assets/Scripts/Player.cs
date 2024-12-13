@@ -87,6 +87,7 @@ public class Player : MonoBehaviour
                 {
                     // Aqui vamos acessar o componente Rigid Body 2D e aplicar a direção da força vezes a força novamente
                      rig.velocity = Vector2.up * forceJump;
+                     anim.SetBool("SecondJump", true);
                      // Define "doubleJump" como "false"
                      doubleJump = false; 
                 }
@@ -103,6 +104,7 @@ public class Player : MonoBehaviour
             jumping = false;
             // E a animação de pulo será desativada
             anim.SetBool("Jumping", false);
+            anim.SetBool("SecondJump", false);
         }
         // Se o player colidir em um objeto que tenha a tag Danger... 
         if (collision.gameObject.tag == "Danger")
